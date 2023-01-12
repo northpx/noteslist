@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+    crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+    <title>Notes List</title>
+</head>
+<body>
+    <button class="add">
+        <i class="fas fa-plus"> Add note</i>
+    </button>
+    <script>
+        "use strict"
+const addBtn = document.querySelector(".add");
+addBtn.addEventListener('click', () => addNewNote());
+function addNewNote(text = '') {
+    const note = document.createElement('div');
+    note.classList.add('note');
+
+    note.innerHTML = `
+    <div class="noteChild">
+        <button class="editBtn"><i class="fas fa-edit"></i></button>
+        <button class="deleteBtn"><i class="fas fa-trash-alt"></i></button>
+    </div>
+    <div class="noteText"></div>
+    <textarea></textarea>
+    `;
+    const deleteBtn = note.querySelector('.deleteBtn');
+    const editBtn = note.querySelector('.editBtn');
+    const textarea = note.querySelector('textarea');
+
+    deleteBtn.addEventListener('click', () => {
+        note.remove();
+    });
+    editBtn.addEventListener('click', ()=>{
+        textarea.focus();
+    })
+    document.body.appendChild(note);
+}
+    </script>
+</body>
+</html>
